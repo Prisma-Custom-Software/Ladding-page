@@ -1,0 +1,22 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.diamond {
+  width: 10px;
+  height: 10px;
+  background: #b8ff3a;
+  transform: rotate(45deg);
+}
+.text {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.light {
+  color: #0b1220;
+}
+.dark {
+  color: #f4f5f8;
+}

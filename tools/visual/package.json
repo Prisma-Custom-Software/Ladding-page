@@ -1,0 +1,8 @@
+{
+  "name": "prisma-visual-compare",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "puppeteer-core": "24.25.0"
+  }
+}

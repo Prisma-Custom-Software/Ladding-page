@@ -1,0 +1,68 @@
+/* Design tokens extraidos de Landing Page v6.html (ver PLANEJAMENTO-ARQUITETURA.md, secao 3) */
+:root {
+  /* cores */
+  --ink: #0b1220;
+  --paper: #f4f5f8;
+  --lime: #b8ff3a;
+  --lilac: #7b6cff;
+  --violet-deep: #4b39d9;
+  --card-light-hover: #ffffff;
+  --placeholder-light: #e9ebf0;
+  --card-dark-hover: rgba(123, 108, 255, 0.08);
+  --ink-deep: #101a30;
+
+  --text-dim: rgba(244, 245, 248, 0.78);
+  --text-dim-70: rgba(244, 245, 248, 0.7);
+  --text-dim-50: rgba(244, 245, 248, 0.5);
+  --text-dim-light: rgba(11, 18, 32, 0.7);
+
+  --line-06: rgba(244, 245, 248, 0.06);
+  --line-08: rgba(244, 245, 248, 0.08);
+  --line-10: rgba(244, 245, 248, 0.1);
+  --line-12: rgba(244, 245, 248, 0.12);
+  --line-14: rgba(244, 245, 248, 0.14);
+  --line-16: rgba(244, 245, 248, 0.16);
+  --line-30: rgba(244, 245, 248, 0.3);
+  --line-light: rgba(11, 18, 32, 0.16);
+
+  --pillar-1: #b8ff3a;
+  --pillar-2: #9be07a;
+  --pillar-3: #9a8cff;
+  --pillar-4: #7b6cff;
+
+  --selection: rgba(184, 255, 58, 0.35);
+  --lime-glow: rgba(184, 255, 58, 0.3);
+  --lilac-hover: rgba(123, 108, 255, 0.12);
+
+  /* fontes */
+  --font-body: 'Roboto', sans-serif;
+  --font-title: 'Oswald', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-brand: 'Exo 2', sans-serif;
+
+  /* layout */
+  --gutter: clamp(20px, 5vw, 72px);
+  --max-w: 1240px;
+  --max-w-contact: 820px;
+  --pad-hero-y: clamp(48px, 8vh, 96px);
+  --pad-section-y: clamp(80px, 13vh, 150px);
+  --pad-about-y: clamp(72px, 12vh, 140px);
+  --pad-contact-y: clamp(80px, 14vh, 160px);
+  --radius: 2px;
+  --radius-chip: 3px;
+
+  /* tipografia */
+  --fs-h1: clamp(42px, 5.6vw, 76px);
+  --fs-h2-section: clamp(34px, 4.4vw, 60px);
+  --fs-h2-about: clamp(32px, 4vw, 52px);
+  --fs-h2-contact: clamp(36px, 5vw, 64px);
+
+  /* z-index */
+  --z-agents: 55;
+  --z-fab: 58;
+  --z-chip: 60;
+  --z-menu-btn: 72;
+  --z-backdrop: 73;
+  --z-drawer: 74;
+  --z-cover: 100;
+}

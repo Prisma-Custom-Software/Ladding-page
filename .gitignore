@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.log
+tools/visual/out/
+tools/visual/.chrome.lock/
+tools/visual/.dev.lock
+tools/visual/dev-server.log
+.vite/

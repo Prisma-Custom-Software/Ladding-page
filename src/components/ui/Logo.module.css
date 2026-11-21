@@ -1,0 +1,28 @@
+.logo {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 12px;
+  color: #f4f5f8;
+}
+.mark {
+  height: auto;
+  display: block;
+}
+.word {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1;
+}
+.name {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.sub {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  color: #b8ff3a;
+}

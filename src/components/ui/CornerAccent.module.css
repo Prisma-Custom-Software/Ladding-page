@@ -1,0 +1,7 @@
+.corner {
+  position: absolute;
+  left: -1px;
+  bottom: -1px;
+  border-left: 2px solid #b8ff3a;
+  border-bottom: 2px solid #b8ff3a;
+}

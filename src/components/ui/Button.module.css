@@ -1,0 +1,35 @@
+.btn {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.btn.primary {
+  color: #0b1220;
+  background: #b8ff3a;
+  padding: 15px 30px;
+  box-shadow: 0 0 30px rgba(184, 255, 58, 0.3);
+}
+.btn.primary:hover {
+  background: #f4f5f8;
+  color: #0b1220;
+}
+.btn.ghost {
+  color: #f4f5f8;
+  border: 1px solid rgba(244, 245, 248, 0.3);
+  padding: 14px 30px;
+}
+.btn.ghost:hover {
+  border-color: #7b6cff;
+  color: #f4f5f8;
+  background: rgba(123, 108, 255, 0.12);
+}
+.btn.primary.lg {
+  padding: 16px 34px;
+}
+.btn.ghost.lg {
+  padding: 15px 34px;
+}
