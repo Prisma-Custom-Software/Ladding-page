@@ -1,0 +1,38 @@
+.btn {
+  position: fixed;
+  top: 20px;
+  right: clamp(14px, 2.4vw, 28px);
+  z-index: var(--z-menu-btn);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px 0 18px;
+  background: rgba(11, 18, 32, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(244, 245, 248, 0.16);
+  border-radius: 2px;
+  cursor: pointer;
+  color: #f4f5f8;
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.btn:hover {
+  border-color: #b8ff3a;
+  color: #b8ff3a;
+}
+.dots {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b8ff3a;
+}

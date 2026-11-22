@@ -1,10 +1,27 @@
-// STUB (T01). T06 implementa o botao Menu.
+import { menu } from '../../data/content.js';
+import { menuStore, useMenuOpen } from './menuStore.js';
+import styles from './MenuButton.module.css';
+
+export const MENU_BUTTON_ID = 'menu-toggle';
+
 export default function MenuButton() {
+  const open = useMenuOpen();
   return (
     <button
       type="button"
+      id={MENU_BUTTON_ID}
       aria-label="Abrir menu"
-      style={{ position: 'fixed', width: 0, height: 0, padding: 0, border: 0, opacity: 0 }}
-    />
+      aria-expanded={open}
+      aria-controls="menu-drawer"
+      className={styles.btn}
+      onClick={() => menuStore.toggle()}
+    >
+      {menu.open}
+      <span className={styles.dots}>
+        <span className={styles.dot} />
+        <span className={styles.dot} />
+        <span className={styles.dot} />
+      </span>
+    </button>
   );
 }

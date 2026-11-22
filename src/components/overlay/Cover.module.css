@@ -1,0 +1,8 @@
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-cover);
+  background: #0b1220;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
