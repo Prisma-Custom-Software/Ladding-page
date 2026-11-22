@@ -1,0 +1,15 @@
+.block {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(244, 245, 248, 0.06);
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 70% at 50% 100%,
+    rgba(184, 255, 58, 0.14) 0%,
+    rgba(184, 255, 58, 0) 72%
+  );
+  pointer-events: none;
+}

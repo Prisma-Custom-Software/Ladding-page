@@ -1,10 +1,11 @@
-// STUB (T01). T05 implementa o bloco (brilho lima + Contact + Footer).
 import Contact from './Contact.jsx';
 import Footer from './Footer.jsx';
+import styles from './ContactBlock.module.css';
 
 export default function ContactBlock() {
   return (
-    <div data-contact-block>
+    <div className={styles.block} data-contact-block>
+      <div className={styles.glow} />
       <Contact />
       <Footer />
     </div>
