@@ -1,0 +1,106 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 12px 22px;
+  transition: background 300ms ease;
+}
+.light {
+  box-shadow: 0 0 0 0.5px rgba(11, 18, 32, 0.16);
+}
+.light:hover {
+  background: #ffffff;
+}
+.dark {
+  box-shadow: 0 0 0 0.5px rgba(244, 245, 248, 0.14);
+}
+.dark:hover {
+  background: rgba(123, 108, 255, 0.08);
+}
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.light .withVideo {
+  background:
+    repeating-linear-gradient(135deg, rgba(11, 18, 32, 0.04) 0 12px, rgba(11, 18, 32, 0) 12px 24px),
+    #0b1220;
+  overflow: hidden;
+}
+.light .placeholder {
+  background:
+    repeating-linear-gradient(135deg, rgba(11, 18, 32, 0.04) 0 12px, rgba(11, 18, 32, 0) 12px 24px),
+    #e9ebf0;
+}
+.dark .placeholder,
+.dark .withVideo {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(244, 245, 248, 0.03) 0 12px,
+      rgba(244, 245, 248, 0) 12px 24px
+    ),
+    linear-gradient(135deg, #101a30, #0b1220);
+}
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #0b1220;
+}
+.phLabel {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+}
+.light .phLabel {
+  color: rgba(11, 18, 32, 0.7);
+}
+.dark .phLabel {
+  color: rgba(244, 245, 248, 0.7);
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 6px;
+}
+.kicker {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+}
+.light .kicker {
+  color: #4b39d9;
+}
+.dark .kicker {
+  color: #7b6cff;
+}
+.title {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.meta {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.light .title {
+  color: #0b1220;
+}
+.light .meta {
+  color: rgba(11, 18, 32, 0.7);
+}
+.dark .title {
+  color: #f4f5f8;
+}
+.dark .meta {
+  color: rgba(244, 245, 248, 0.7);
+}
