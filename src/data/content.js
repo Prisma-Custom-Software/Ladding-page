@@ -1,7 +1,14 @@
 // Todo o conteudo textual do site (extraido de Landing Page v6.html).
-import equipe from '../assets/img/equipe.jpg';
+import equipe480 from '../assets/img/equipe-480.webp';
+import equipe800 from '../assets/img/equipe-800.webp';
+import equipe1200 from '../assets/img/equipe-1200.webp';
+import equipe1600 from '../assets/img/equipe-1600.webp';
 import ponto from '../assets/video/ponto.mp4';
+import pontoWebm from '../assets/video/ponto.webm';
+import pontoPoster from '../assets/video/ponto-poster.webp';
 import connectApp from '../assets/video/connect-app.mp4';
+import connectAppWebm from '../assets/video/connect-app.webm';
+import connectAppPoster from '../assets/video/connect-app-poster.webp';
 
 export const hero = {
   kicker: 'Diferentes perspectivas. Soluções inteligentes.',
@@ -15,7 +22,9 @@ export const hero = {
 };
 
 export const about = {
-  image: equipe,
+  image: equipe1600,
+  imageSet: `${equipe480} 480w, ${equipe800} 800w, ${equipe1200} 1200w, ${equipe1600} 1600w`,
+  imageSizes: '(max-width: 900px) 100vw, 50vw',
   alt: 'Equipe reunida em evento, vestindo camisetas amarelas',
   label: 'Quem somos',
   title: ['Somos ', '6', ' desenvolvedores.'],
@@ -68,8 +77,8 @@ export const services = [
       },
     ],
     projects: [
-      { n: '01', title: 'Sistema de ponto', meta: PROJECT_DESC, video: ponto },
-      { n: '02', title: 'Connect App', meta: PROJECT_DESC, video: connectApp },
+      { n: '01', title: 'Sistema de ponto', meta: PROJECT_DESC, video: ponto, webm: pontoWebm, poster: pontoPoster },
+      { n: '02', title: 'Connect App', meta: PROJECT_DESC, video: connectApp, webm: connectAppWebm, poster: connectAppPoster },
       { n: '03', title: 'Nome do projeto', meta: PROJECT_DESC, video: null },
     ],
   },
