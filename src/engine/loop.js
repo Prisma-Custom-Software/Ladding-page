@@ -16,7 +16,13 @@ function tick(now) {
   const t = typeof now === 'number' ? now : nowMs();
   const dt = Math.min(0.05, Math.max(0, (t - last) / 1000));
   last = t;
-  for (const cb of Array.from(subs)) cb(t, dt);
+  for (const cb of Array.from(subs)) {
+    try {
+      cb(t, dt);
+    } catch (err) {
+      console.error('[loop] erro em callback', err);
+    }
+  }
   schedule();
 }
 
