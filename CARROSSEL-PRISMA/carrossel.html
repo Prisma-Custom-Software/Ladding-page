@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prisma — carrossel animado (prévia)</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --w: min(92vw, calc((100vh - 170px) * 0.8), 540px); }
+  html, body { margin: 0; background: #05070d; color: #f4f5f8; font: 14px/1.4 'Roboto Mono', monospace; }
+  main { min-height: 100vh; display: grid; place-items: center; gap: 14px; padding: 18px 0; box-sizing: border-box; }
+  .post { width: var(--w); background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 20px 80px rgba(123,108,255,.25); }
+  .head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #0b1220; }
+  .head b { font-family: 'Exo 2'; font-weight: 800; }
+  .head span { opacity: .6; font-size: 12px; }
+  .rail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail canvas { flex: 0 0 100%; width: 100%; aspect-ratio: 4 / 5; scroll-snap-align: start; display: block; }
+  .dots { display: flex; gap: 6px; justify-content: center; padding: 10px 0; background: #0b1220; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: #3a4460; }
+  .dots i.on { background: #b8ff3a; }
+  .bar { display: flex; gap: 10px; align-items: center; }
+  button { font: inherit; background: #b8ff3a; color: #0b1220; border: 0; border-radius: 99px; padding: 8px 16px; font-weight: 700; cursor: pointer; }
+  button.ghost { background: transparent; color: #f4f5f8; border: 1px solid #3a4460; }
+  .strip { width: min(96vw, 1200px); }
+  .strip h2 { font: 700 14px 'Roboto Mono'; opacity: .7; margin: 18px 0 8px; }
+  .strip .row { display: flex; }
+  .strip canvas { width: calc(100% / 6); aspect-ratio: 4 / 5; display: block; }
+</style>
+</head>
+<body>
+<main>
+  <div class="post">
+    <div class="head"><b>prisma.tech</b><span>Patrocinado · prévia</span></div>
+    <div class="rail" id="rail"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+  <div class="bar">
+    <button id="sound">▶ Ativar som</button>
+    <button class="ghost" id="prev">‹</button>
+    <button class="ghost" id="next">›</button>
+    <span id="info">arraste para o lado</span>
+  </div>
+  <div class="strip">
+    <h2>PANORAMA — os 6 slides lado a lado (costuras da linha de montagem)</h2>
+    <div class="row" id="strip"></div>
+  </div>
+</main>
+<script src="engine/core.js"></script>
+<script src="engine/draw.js"></script>
+<script src="engine/audio.js"></script>
+<script src="engine/stage.js"></script>
+<script src="slides/s1.js"></script>
+<script src="slides/s2.js"></script>
+<script src="slides/s3.js"></script>
+<script src="slides/s4.js"></script>
+<script src="slides/s5.js"></script>
+<script src="slides/s6.js"></script>
+<script>
+(async () => {
+  await P.loadFonts();
+  const rail = document.getElementById('rail'), dots = document.getElementById('dots'), strip = document.getElementById('strip');
+  const stages = [], starts = [];
+  for (let n = 1; n <= 6; n++) {
+    const c = document.createElement('canvas');
+    c.width = P.W; c.height = P.H;
+    rail.appendChild(c);
+    stages.push(P.stage(c, P.SLIDES[n]));
+    starts.push(performance.now());
+    dots.appendChild(document.createElement('i'));
+    const s = document.createElement('canvas');
+    s.width = P.W; s.height = P.H;
+    strip.appendChild(s);
+    P.stage(s, P.SLIDES[n]).draw(5.2);
+  }
+  let cur = 0;
+  let ac = null, buffers = [], src = null;
+  const play = () => {
+    if (!ac) return;
+    if (src) try { src.stop(); } catch (e) {}
+    src = ac.createBufferSource();
+    src.buffer = buffers[cur];
+    src.loop = true;
+    src.connect(ac.destination);
+    src.start();
+  };
+  const go = (i) => {
+    if (i === cur) return;
+    cur = i;
+    starts[i] = performance.now(); // Instagram starts each video from the top when it comes into view
+    [...dots.children].forEach((d, j) => d.classList.toggle('on', j === i));
+    play();
+  };
+  dots.children[0].classList.add('on');
+  rail.addEventListener('scroll', () => go(Math.round(rail.scrollLeft / rail.clientWidth)), { passive: true });
+  document.getElementById('prev').onclick = () => rail.scrollTo({ left: Math.max(0, cur - 1) * rail.clientWidth, behavior: 'smooth' });
+  document.getElementById('next').onclick = () => rail.scrollTo({ left: Math.min(5, cur + 1) * rail.clientWidth, behavior: 'smooth' });
+  document.getElementById('sound').onclick = async (e) => {
+    e.target.textContent = 'gerando áudio…';
+    ac = new AudioContext();
+    for (let n = 1; n <= 6; n++) {
+      const { L, R, sr } = await P.renderAudio(P.SLIDES[n]);
+      const b = ac.createBuffer(2, L.length, sr);
+      b.copyToChannel(L, 0); b.copyToChannel(R, 1);
+      buffers.push(b);
+    }
+    starts[cur] = performance.now();
+    play();
+    e.target.textContent = '♪ som ligado';
+  };
+  const loop = () => {
+    const now = performance.now();
+    // draw the visible slide and its neighbours (seen mid-swipe)
+    for (let i = Math.max(0, cur - 1); i <= Math.min(5, cur + 1); i++) stages[i].draw(((now - starts[i]) / 1000) % P.DUR);
+    requestAnimationFrame(loop);
+  };
+  loop();
+})();
+</script>
+</body>
+</html>

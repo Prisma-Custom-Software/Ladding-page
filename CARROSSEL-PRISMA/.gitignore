@@ -1,0 +1,4 @@
+out/*.mp4
+out/.audio-*.wav
+out/frame-*.png
+out/sheet-*.png
