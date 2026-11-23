@@ -54,6 +54,49 @@
   display: block;
   background: #0b1220;
 }
+.lifted .video {
+  visibility: hidden;
+}
+.open {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background: rgba(11, 18, 32, 0.78);
+  box-shadow: 0 0 0 0.5px rgba(184, 255, 58, 0.5);
+  color: #b8ff3a;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+.open:hover .hint,
+.open:focus-visible .hint {
+  opacity: 1;
+  transform: none;
+}
+@media (hover: none) {
+  .hint {
+    opacity: 1;
+    transform: none;
+  }
+}
 .phLabel {
   font-family: 'Roboto Mono', monospace;
   font-size: 12px;

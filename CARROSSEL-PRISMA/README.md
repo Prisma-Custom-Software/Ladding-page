@@ -23,6 +23,7 @@ Para forçar software: `GFLAGS= node tools/render.mjs`.
 ```bash
 node tools/render.mjs            # todos os slides (~2 min cada, Chrome com GPU)
 node tools/finish.mjs            # carrossel-completo.mp4 + panorama.png
+node tools/showcase.mjs          # vídeos do site: loop do card + MP4 web de cada slide (src/assets)
 node tools/render.mjs 2,5        # só alguns
 node tools/sheet.mjs 4           # folha de contato de um slide em out/sheet-04.png
 node tools/frame.mjs 6 4.1       # um quadro em resolução cheia

@@ -9,6 +9,23 @@ import pontoPoster from '../assets/video/ponto-poster.webp';
 import connectApp from '../assets/video/connect-app.mp4';
 import connectAppWebm from '../assets/video/connect-app.webm';
 import connectAppPoster from '../assets/video/connect-app-poster.webp';
+import institucional from '../assets/video/institucional.mp4';
+import institucionalWebm from '../assets/video/institucional.webm';
+import institucionalPoster from '../assets/video/institucional-poster.webp';
+import carrossel from '../assets/video/carrossel.mp4';
+import carrosselWebm from '../assets/video/carrossel.webm';
+import carrosselPoster from '../assets/video/carrossel-poster.webp';
+
+// Slides do carrossel animado (um MP4 por slide, 4:5), abertos no visualizador interativo.
+const carrosselSlides = Object.entries(
+  import.meta.glob('../assets/carrossel/slide-0*.{mp4,webp}', { eager: true, import: 'default' }),
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .reduce((acc, [file, url]) => {
+    const n = Number(file.match(/slide-0(\d)/)[1]);
+    acc[n - 1] = { ...acc[n - 1], n, [file.endsWith('.webp') ? 'poster' : 'video']: url };
+    return acc;
+  }, []);
 
 export const hero = {
   kicker: 'Diferentes perspectivas. Soluções inteligentes.',
@@ -85,12 +102,12 @@ export const services = [
   {
     id: 'motion',
     index: '02',
-    label: 'Motion Design e Edição de Vídeo',
+    label: 'Motion Design, Carrossel para Instagram e Edição de Vídeo',
     light: false,
     agents: [2, 3],
     title: 'Movimento que explica, vende e prende a atenção.',
-    text: 'Animações, vídeos institucionais e conteúdo para redes — do roteiro à edição final, com a cara da sua marca.',
-    tags: ['motion design', 'edição', 'redes sociais', 'institucional'],
+    text: 'Animações, carrosséis animados para o Instagram, vídeos institucionais e edição — do roteiro à entrega final, com a cara da sua marca.',
+    tags: ['motion design', 'carrossel', 'edição', 'redes sociais', 'institucional'],
     cards: [
       {
         title: 'Vídeos institucionais',
@@ -103,8 +120,8 @@ export const services = [
         icon: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z',
       },
       {
-        title: 'Conteúdo para redes',
-        text: 'Reels, shorts e anúncios no formato certo.',
+        title: 'Carrosséis para Instagram',
+        text: 'Carrosséis animados que prendem o swipe do primeiro ao último slide.',
         icon: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M10 8l6 4-6 4z',
       },
       {
@@ -123,7 +140,26 @@ export const services = [
         icon: 'M4 7V4h16v3 M9 20h6 M12 4v16',
       },
     ],
-    projects: placeholderProjects(),
+    projects: [
+      {
+        n: '01',
+        title: 'Vídeo institucional Prisma',
+        meta: 'Prisma Technologies · 2026 · motion design em código, 20 s.',
+        video: institucional,
+        webm: institucionalWebm,
+        poster: institucionalPoster,
+      },
+      {
+        n: '02',
+        title: 'Carrossel animado Prisma',
+        meta: 'Prisma Technologies · 2026 · carrossel de 6 slides para o Instagram, motion em código.',
+        video: carrossel,
+        webm: carrosselWebm,
+        poster: carrosselPoster,
+        carousel: { slides: carrosselSlides, ratio: 4 / 5 },
+      },
+      ...placeholderProjects().slice(2),
+    ],
   },
   {
     id: 'landing',
@@ -173,6 +209,22 @@ export const services = [
 export const projectsLabel = 'Projetos';
 export const projectPlaceholderLabel = (n) => `[ comprovação ${n} ]`;
 export const projectKicker = (n) => `Projeto ${n}`;
+export const projectViewer = {
+  openLabel: (title) => `Abrir projeto: ${title}`,
+  hint: 'Ver projeto',
+  closeLabel: 'Fechar projeto',
+  closeText: 'Fechar',
+};
+export const carouselViewer = {
+  label: 'Carrossel',
+  slideLabel: (n, total) => `Slide ${n} de ${total}`,
+  prev: 'Slide anterior',
+  next: 'Próximo slide',
+  goTo: (n) => `Ir para o slide ${n}`,
+  soundOn: 'Ativar som',
+  soundOff: 'Desativar som',
+  hint: 'Arraste ou use as setas',
+};
 
 export const contact = {
   title: ['Mais que código,', 'soluções reais.'],

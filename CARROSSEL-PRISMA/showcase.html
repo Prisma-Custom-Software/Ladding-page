@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Prisma — vitrine do carrossel (16:9)</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  html, body { margin: 0; background: #05070d; height: 100%; }
+  body { display: grid; place-items: center; }
+  canvas { width: min(100vw, calc(100vh * 16 / 9)); height: auto; display: block; }
+  body.capture canvas { width: 1920px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="engine/core.js"></script>
+<script src="engine/draw.js"></script>
+<script src="engine/audio.js"></script>
+<script src="engine/stage.js"></script>
+<script src="slides/s1.js"></script>
+<script src="slides/s2.js"></script>
+<script src="slides/s3.js"></script>
+<script src="slides/s4.js"></script>
+<script src="slides/s5.js"></script>
+<script src="slides/s6.js"></script>
+<script>
+/* Showcase for the website's project card: the six slides as an Instagram carousel being swiped, 16:9, 48 s.
+ * The current slide plays; neighbours show a still. Swipe on the last beat of each slide, so the bot that flies
+ * out of the right edge lands in the next slide. After slide 6 the carousel rewinds to slide 1 (seamless loop). */
+(async () => {
+  const CW = 1920, CH = 1080;
+  const SH = 900, SW = SH * 0.8, GAP = 760, R = 22;
+  const HERO = [6.3, 6.5, 4.5, 5.0, 5.0, 5.0];
+  const TOTAL = 6 * P.DUR, SWIPE = 0.5;
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  await P.loadFonts();
+  const mk = () => { const c = document.createElement('canvas'); c.width = P.W; c.height = P.H; return c; };
+  const live = [], stills = [];
+  for (let n = 1; n <= 6; n++) {
+    const c = mk();
+    const st = P.stage(c, P.SLIDES[n]);
+    live.push({ c, st });
+    const s = mk();
+    P.stage(s, P.SLIDES[n]).draw(HERO[n - 1]);
+    stills.push(s);
+  }
+  const E = P.ease;
+
+  // continuous carousel position (0..5) at global time T
+  const pos = (T) => {
+    const i = Math.floor(T / P.DUR), lt = T - i * P.DUR;
+    if (lt < P.DUR - SWIPE) return i;
+    const k = E.inOutCubic((lt - (P.DUR - SWIPE)) / SWIPE);
+    return i < 5 ? i + k : 5 - 5 * k; // after slide 6, rewind to the start
+  };
+
+  const bg = (T) => {
+    ctx.fillStyle = '#0b1220';
+    ctx.fillRect(0, 0, CW, CH);
+    const g = ctx.createRadialGradient(CW / 2, CH * 0.45, 0, CW / 2, CH * 0.45, 900);
+    g.addColorStop(0, 'rgba(123,108,255,0.28)');
+    g.addColorStop(1, 'rgba(123,108,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, CW, CH);
+    ctx.fillStyle = 'rgba(123,108,255,0.22)';
+    const off = ((T / TOTAL) * 6 * 60) % 60;
+    for (let x = 0; x <= CW; x += 60) for (let y = -off; y <= CH; y += 60) ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
+  };
+
+  const draw = (T) => {
+    T = ((T % TOTAL) + TOTAL) % TOTAL;
+    const i = Math.floor(T / P.DUR), lt = T - i * P.DUR;
+    live[i].st.draw(lt);
+    bg(T);
+    const p = pos(T);
+    const order = [0, 1, 2, 3, 4, 5].sort((a, b) => Math.abs(b - p) - Math.abs(a - p));
+    for (const k of order) {
+      const rel = k - p, ar = Math.abs(rel);
+      if (ar > 2.2) continue;
+      const sc = 1 - 0.18 * Math.min(1, ar);
+      const w = SW * sc, h = SH * sc;
+      const x = CW / 2 + rel * GAP - w / 2, y = 66 + (SH - h) / 2;
+      ctx.save();
+      ctx.shadowColor = k === i ? 'rgba(123,108,255,0.55)' : 'rgba(0,0,0,0.5)';
+      ctx.shadowBlur = 60;
+      P.rr(ctx, x, y, w, h, R * sc);
+      ctx.fillStyle = '#000';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.clip();
+      ctx.drawImage(k === i ? live[i].c : stills[k], x, y, w, h);
+      const dim = Math.min(1, ar) * 0.55;
+      if (dim > 0.01) {
+        ctx.fillStyle = `rgba(5,8,16,${dim})`;
+        ctx.fillRect(x, y, w, h);
+      }
+      ctx.restore();
+    }
+    // dots
+    const cy = 1018;
+    for (let k = 0; k < 6; k++) {
+      const on = Math.max(0, 1 - Math.abs(k - p));
+      const w = 12 + 30 * on;
+      const x = CW / 2 - 6 * 30 / 2 + k * 30 - 16 * on;
+      ctx.fillStyle = on > 0.5 ? '#b8ff3a' : 'rgba(244,245,248,0.3)';
+      P.rr(ctx, x, cy - 6, w, 12, 6);
+      ctx.fill();
+    }
+    ctx.font = '500 22px "Roboto Mono"';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(244,245,248,0.7)';
+    ctx.fillText(`0${Math.round(p) + 1} / 06`, CW / 2 + 140, cy + 8);
+    ctx.textAlign = 'right';
+    ctx.fillText('CARROSSEL · INSTAGRAM', CW / 2 - 140, cy + 8);
+    // finger swipe hint during the swipe
+    const sw = lt - (P.DUR - SWIPE);
+    if (sw > -0.15) {
+      const k = Math.max(0, Math.min(1, (sw + 0.15) / (SWIPE + 0.1)));
+      const dir = i < 5 ? 1 : -1;
+      const fx = CW / 2 + dir * (220 - 440 * E.inOutCubic(k)), fy = 66 + SH * 0.62;
+      ctx.save();
+      ctx.globalAlpha = Math.sin(k * Math.PI);
+      ctx.fillStyle = 'rgba(244,245,248,0.85)';
+      ctx.beginPath();
+      ctx.arc(fx, fy, 34, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(184,255,58,0.9)';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+      ctx.restore();
+    }
+  };
+
+  window.__frame = (t, type = 'image/png') => { draw(t); return canvas.toDataURL(type); };
+  window.__draw = draw;
+  window.__total = TOTAL;
+  window.__audio = async () => {
+    const parts = [];
+    for (let n = 1; n <= 6; n++) parts.push(await P.renderAudio(P.SLIDES[n]));
+    const len = parts.reduce((s, a) => s + a.L.length, 0);
+    const L = new Float32Array(len), Rr = new Float32Array(len);
+    let o = 0;
+    for (const a of parts) { L.set(a.L, o); Rr.set(a.R, o); o += a.L.length; }
+    const buf = P.wav({ L, R: Rr, sr: parts[0].sr });
+    let s = '', u = new Uint8Array(buf);
+    for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000));
+    return btoa(s);
+  };
+  const q = new URLSearchParams(location.search);
+  if (q.has('capture')) { document.body.classList.add('capture'); window.__ready = true; return; }
+  if (q.has('t')) { draw(+q.get('t')); window.__ready = true; return; }
+  window.__ready = true;
+  const t0 = performance.now();
+  const loop = () => { draw(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); };
+  loop();
+})();
+</script>
+</body>
+</html>
