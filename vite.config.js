@@ -4,6 +4,8 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   plugins: [react()],
+  // GitHub Pages serve o site em /<repo>/; o workflow define VITE_BASE. Local e dev continuam em '/'.
+  base: process.env.VITE_BASE || '/',
   server: { port: 5173, strictPort: true },
   build: {
     chunkSizeWarningLimit: 600,
