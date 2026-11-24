@@ -50,7 +50,9 @@ export default function ServiceSection({ service, id = 'software', agents, featu
           </div>
         </div>
         {features &&
-          s.projects.filter((p) => p.feature).map((p) => <ProjectFeature key={p.n} project={p} light={light} />)}
+          s.projects
+            .filter((p) => p.feature)
+            .map((p, i) => <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} />)}
         <div className={styles.cards}>
           {s.cards.map((c) => (
             <ServiceCard key={c.title} card={c} light={light} />

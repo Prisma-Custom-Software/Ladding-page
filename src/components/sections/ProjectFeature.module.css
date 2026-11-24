@@ -4,9 +4,20 @@
   gap: clamp(28px, 4vw, 56px);
   align-items: center;
 }
+/* midia a direita: a coluna de texto vem antes no grid */
+.reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+.reverse .media {
+  order: 2;
+}
 @media (max-width: 960px) {
-  .feature {
+  .feature,
+  .reverse {
     grid-template-columns: 1fr;
+  }
+  .reverse .media {
+    order: 0;
   }
 }
 .media {

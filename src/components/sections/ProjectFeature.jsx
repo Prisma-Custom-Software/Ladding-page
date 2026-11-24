@@ -6,11 +6,12 @@ import ProjectCard from './ProjectCard.jsx';
 import { projectKicker } from '../../data/content.js';
 import styles from './ProjectFeature.module.css';
 
-export default function ProjectFeature({ project, light = false }) {
+// reverse: midia a direita (alterna os destaques para dar ritmo).
+export default function ProjectFeature({ project, light = false, reverse = false }) {
   const f = project.feature;
   const theme = light ? styles.light : styles.dark;
   return (
-    <div className={`${styles.feature} ${theme}`} data-feature={project.n}>
+    <div className={`${styles.feature} ${theme} ${reverse ? styles.reverse : ''}`} data-feature={project.n}>
       <div className={styles.media}>
         <ProjectCard project={project} light={light} bare />
       </div>

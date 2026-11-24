@@ -131,7 +131,43 @@ export const services = [
           tags: ['PWA', 'offline-first', 'REP-P', 'SHA-256'],
         },
       },
-      { n: '02', title: 'Connect App', meta: PROJECT_DESC, video: connectApp, webm: connectAppWebm, poster: connectAppPoster },
+      {
+        n: '02',
+        title: 'Connect App',
+        meta: PROJECT_DESC,
+        video: connectApp,
+        webm: connectAppWebm,
+        poster: connectAppPoster,
+        // Destaque na pagina de projetos (informacoes tiradas do proprio video do produto).
+        feature: {
+          kicker: 'Em destaque',
+          name: 'Connect Valley',
+          lead: 'O portal do expositor da Connect Valley 2026: leads, talentos, ranking e agenda do evento em um só app.',
+          highlights: [
+            {
+              title: 'Leads pelo crachá',
+              text: 'Bipou o crachá, virou lead: nome, empresa, cargo e LinkedIn salvos no painel do expositor.',
+              icon: 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h3v3h-3z M20 14v7 M14 20h3',
+            },
+            {
+              title: 'Banco de talentos',
+              text: 'O currículo cai direto na empresa, com perfil DISC e análise por IA.',
+              icon: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19 8v6 M22 11h-6',
+            },
+            {
+              title: 'Ranking dos estandes',
+              text: 'Estrelas e check-ins definem a posição; os líderes concorrem a um prêmio especial.',
+              icon: 'M8 21h8 M12 17v4 M7 4h10v5a5 5 0 0 1-10 0z M17 5h3v2a3 3 0 0 1-3 3 M7 5H4v2a3 3 0 0 0 3 3',
+            },
+            {
+              title: 'Agenda no bolso',
+              text: 'A programação inteira: dois dias, dois palcos, com empresas expositoras no palco.',
+              icon: 'M3 5h18v16H3z M16 3v4 M8 3v4 M3 10h18',
+            },
+          ],
+          tags: ['leads', 'IA', 'gamificação', 'eventos'],
+        },
+      },
       { n: '03', title: 'Nome do projeto', meta: PROJECT_DESC, video: null },
     ],
   },
