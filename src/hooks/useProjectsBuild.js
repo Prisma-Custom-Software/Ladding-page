@@ -7,7 +7,7 @@ import { createSparks } from '../engine/sparks.js';
 import { initSections, startSection, compressSection, updateSections, allSectionsDone, setItem } from '../engine/sections.js';
 import { createRobots, stepRobot } from '../engine/robotAgents.js';
 
-export const BUDGET = 1500;
+export const BUDGET = 2000;
 const ROBOTS = [0, 1, 2, 3, 4];
 
 const reduceMotion = () =>
