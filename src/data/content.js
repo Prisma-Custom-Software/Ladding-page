@@ -28,12 +28,12 @@ const carrosselSlides = Object.entries(
   }, []);
 
 export const hero = {
-  kicker: 'Diferentes perspectivas. Soluções inteligentes.',
-  title: ['Tecnologia que conecta pessoas, processos e ', 'resultados.'],
-  text: 'Somos 6 desenvolvedores. Diferentes habilidades, uma mesma direção: transformar ideias em soluções que impulsionam negócios.',
+  kicker: 'Software · Automação · Motion · Landing pages',
+  title: ['Software sob medida que faz o trabalho repetitivo ', 'sozinho.'],
+  text: 'Somos 6 desenvolvedores. Já colocamos no ar robôs que lançam intimações com prazo, um ponto eletrônico que funciona offline e o app de um evento inteiro.',
   ctas: [
-    { variant: 'primary', label: 'Fale com a gente', href: '#contato' },
-    { variant: 'ghost', label: 'Ver serviços', href: '#software' },
+    { variant: 'primary', label: 'Pedir orçamento', href: '#contato' },
+    { variant: 'ghost', label: 'Ver o que fazemos', href: '#software' },
   ],
   scroll: 'Role',
 };
@@ -46,8 +46,8 @@ export const about = {
   label: 'Quem somos',
   title: ['Somos ', '6', ' desenvolvedores.'],
   text: [
-    'Diferentes habilidades, uma mesma direção: ',
-    'transformar ideias em soluções que impulsionam negócios.',
+    'Código, automação, integração e motion na mesma equipe: ',
+    'você fala direto com quem constrói.',
   ],
   pillars: [
     { label: 'Desenvolvimento', color: '#B8FF3A' },
@@ -69,7 +69,7 @@ export const services = [
     light: true,
     agents: [0, 1],
     title: 'Sistemas que trabalham do jeito que o seu negócio funciona.',
-    text: 'Software sob medida, automações e integrações que tiram o retrabalho do caminho e deixam a operação mais rápida.',
+    text: 'Sistemas web, apps e robôs feitos para o seu processo. A planilha que alguém atualiza à mão toda segunda vira uma tela que se atualiza sozinha.',
     tags: ['web apps', 'automação', 'APIs'],
     cards: [
       {
@@ -79,7 +79,7 @@ export const services = [
       },
       {
         title: 'Automação de processos',
-        text: 'Tarefas repetitivas rodando sozinhas, com menos erro.',
+        text: 'Robôs que fazem a tarefa repetitiva todo dia, no mesmo horário, sem esquecer.',
         icon: 'M13 2 3 14h9l-1 8 10-12h-9l1-8Z',
       },
       {
@@ -89,7 +89,7 @@ export const services = [
       },
       {
         title: 'Evolução e suporte',
-        text: 'Manutenção contínua e melhorias depois da entrega.',
+        text: 'Depois da entrega a gente continua: ajustes, melhorias e suporte.',
         icon: 'M21 12a9 9 0 1 1-3-6.7 M21 3v6h-6',
       },
     ],
@@ -258,18 +258,18 @@ export const services = [
     label: 'Motion Design, Carrossel para Instagram e Edição de Vídeo',
     light: false,
     agents: [2, 3],
-    title: 'Movimento que explica, vende e prende a atenção.',
-    text: 'Animações, carrosséis animados para o Instagram, vídeos institucionais e edição — do roteiro à entrega final, com a cara da sua marca.',
+    title: 'Vídeo que segura o dedo antes do próximo swipe.',
+    text: 'Carrosséis animados para o Instagram, vídeos institucionais e edição. A gente escreve o roteiro, anima, compõe a trilha e entrega pronto para postar.',
     tags: ['motion design', 'carrossel', 'edição', 'redes sociais', 'institucional'],
     cards: [
       {
         title: 'Vídeos institucionais',
-        text: 'Sua empresa contada em poucos minutos, com ritmo.',
+        text: 'Sua empresa contada em segundos, com cada corte no tempo da música.',
         icon: 'M3 3h18v18H3z M7 3v18 M17 3v18 M3 8h4 M3 16h4 M17 8h4 M17 16h4',
       },
       {
         title: 'Animação de logo',
-        text: 'Assinaturas animadas para abrir e fechar conteúdos.',
+        text: 'Sua logo ganhando vida na abertura e no fechamento de cada vídeo.',
         icon: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z',
       },
       {
@@ -279,7 +279,7 @@ export const services = [
       },
       {
         title: 'Explainers animados',
-        text: 'Produtos complexos explicados de forma simples.',
+        text: 'O produto difícil de explicar, mostrado numa animação que qualquer pessoa entende.',
         icon: 'M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z',
       },
       {
@@ -289,7 +289,7 @@ export const services = [
       },
       {
         title: 'Legendas e trilha',
-        text: 'Legendas animadas, trilha e sound design.',
+        text: 'Legendas animadas para quem assiste sem som, trilha e efeitos.',
         icon: 'M4 7V4h16v3 M9 20h6 M12 4v16',
       },
     ],
@@ -378,8 +378,8 @@ export const services = [
     label: 'Landing Pages',
     light: true,
     agents: [4, 0],
-    title: 'Páginas rápidas, bonitas e feitas para converter.',
-    text: 'Páginas de venda sob medida para lançamentos, produtos e ofertas — cada bloco pensado para levar o visitante até a compra.',
+    title: 'Páginas que levam o visitante do anúncio até o botão de compra.',
+    text: 'Para lançamento, produto ou oferta. Cada bloco responde uma dúvida de quem está quase comprando, e o botão aparece na hora certa.',
     tags: ['copy', 'conversão', 'checkout', 'mobile'],
     cards: [
       {
@@ -422,8 +422,8 @@ export const projectsLabel = 'Projetos';
 // Pagina /projetos: extensao das secoes de servico, com a tipografia do carrossel.
 export const projectsPage = {
   kicker: 'Portfólio · Prisma Technologies',
-  title: ['Projetos ', 'sob medida.'],
-  text: 'Software, motion e landing pages construídos do zero para cada cliente. Toque em um projeto para ver de perto.',
+  title: ['O que já está ', 'rodando.'],
+  text: 'Sistemas, robôs, vídeos e carrosséis feitos do zero para cada cliente. Toque em um projeto para ver de perto.',
   jump: [
     { href: '#software', index: '01', label: 'Software' },
     { href: '#motion', index: '02', label: 'Motion, carrossel e vídeo' },
@@ -450,12 +450,12 @@ export const carouselViewer = {
 };
 
 export const contact = {
-  title: ['Mais que código,', 'soluções reais.'],
-  text: 'Conte o que você precisa. A gente responde com um caminho claro para chegar lá.',
+  title: ['Qual tarefa você quer', 'nunca mais fazer?'],
+  text: 'Conte como ela é feita hoje, ou mande a ideia do vídeo ou da página. A gente responde com por onde começar e quanto custa.',
   email: 'contato@prisma.tech',
   ctas: [
-    { variant: 'primary', label: 'Iniciar um projeto', href: 'mailto:contato@prisma.tech' },
-    { variant: 'ghost', label: 'WhatsApp', href: '#' },
+    { variant: 'primary', label: 'Pedir orçamento', href: 'mailto:contato@prisma.tech' },
+    { variant: 'ghost', label: 'Chamar no WhatsApp', href: '#' },
   ],
 };
 
@@ -480,7 +480,7 @@ export const menu = {
   ],
   contactLabel: 'Fale com a gente',
   email: 'contato@prisma.tech',
-  cta: 'Iniciar um projeto',
+  cta: 'Pedir orçamento',
   close: 'Fechar',
   open: 'Menu',
 };
@@ -490,6 +490,6 @@ export const footer = {
   slogan: 'Diferentes perspectivas. Soluções inteligentes.',
 };
 
-export const fab = { label: 'Iniciar projeto', href: '#contato' };
+export const fab = { label: 'Pedir orçamento', href: '#contato' };
 
 export const brand = { name: 'PRISMA', sub: 'TECHNOLOGIES' };
