@@ -220,6 +220,35 @@ export const services = [
         video: institucional,
         webm: institucionalWebm,
         poster: institucionalPoster,
+        // Destaque na pagina de projetos (informacoes tiradas do proprio projeto em video-institucional/).
+        feature: {
+          kicker: 'Em destaque',
+          name: 'Prisma em 20 segundos',
+          lead: 'O vídeo institucional da Prisma: produto, automação, apps e integração contados em sete batidas, com trilha própria.',
+          highlights: [
+            {
+              title: 'Sete batidas a 120 BPM',
+              text: 'Gancho, produto, automação, aplicativos, integração, prova e assinatura, cada corte no tempo da música.',
+              icon: 'M9 18V5l12-2v13 M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+            },
+            {
+              title: 'Trilha original',
+              text: 'Música sintetizada do zero, com os sons de interface caindo exatamente nos cliques da tela.',
+              icon: 'M2 12h2 M6 8v8 M10 4v16 M14 7v10 M18 10v4 M22 12h-2',
+            },
+            {
+              title: '16:9 e 9:16',
+              text: 'Um único roteiro gera as duas versões: horizontal para site e YouTube, vertical para Reels e Stories.',
+              icon: 'M2 6h14v10H2z M18 4h4v16h-4z',
+            },
+            {
+              title: 'Motion em código',
+              text: 'Cada quadro renderizado por código, sem After Effects: ajustar texto ou cor é refazer o render.',
+              icon: 'M16 18l6-6-6-6 M8 6l-6 6 6 6',
+            },
+          ],
+          tags: ['institucional', '20 s', 'trilha própria', 'reels'],
+        },
       },
       {
         n: '02',
@@ -229,6 +258,35 @@ export const services = [
         webm: carrosselWebm,
         poster: carrosselPoster,
         carousel: { slides: carrosselSlides, ratio: 4 / 5 },
+        // Destaque na pagina de projetos (informacoes tiradas de CARROSSEL-PRISMA/).
+        feature: {
+          kicker: 'Em destaque',
+          name: 'Carrossel Prisma',
+          lead: 'Seis slides animados para o Instagram, do gancho ao preço, feitos para serem vistos inteiros duas vezes.',
+          highlights: [
+            {
+              title: 'Um slide puxa o outro',
+              text: 'Os robôs saem pela borda de um slide e entram no próximo: o swipe vira parte da animação.',
+              icon: 'M5 12h14 M13 6l6 6-6 6',
+            },
+            {
+              title: 'Loop sem emenda',
+              text: 'Cada slide tem 8 s a 120 BPM e volta ao início sem corte, na imagem e no som.',
+              icon: 'M17 2l4 4-4 4 M3 11V9a4 4 0 0 1 4-4h14 M7 22l-4-4 4-4 M21 13v2a4 4 0 0 1-4 4H3',
+            },
+            {
+              title: 'Logo que se desmonta',
+              text: 'O prisma da Prisma se quebra nas costuras entre os slides e se monta de novo no seguinte.',
+              icon: 'M12 2l9 16H3z M12 2v16 M7.5 10h9',
+            },
+            {
+              title: 'Pronto para postar',
+              text: '1080 × 1350 (4:5), um MP4 por slide, com som sintetizado próprio.',
+              icon: 'M3 3h18v18H3z M3 9h18 M9 21V9',
+            },
+          ],
+          tags: ['instagram', '4:5', '6 slides', 'loop'],
+        },
       },
       ...placeholderProjects().slice(2),
     ],
