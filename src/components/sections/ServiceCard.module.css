@@ -64,3 +64,10 @@
 .dark .text {
   color: rgba(244, 245, 248, 0.7);
 }
+
+/* tipografia do carrossel (pagina de projetos) */
+:global([data-type='heavy']) .title {
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: 0.005em;
+}

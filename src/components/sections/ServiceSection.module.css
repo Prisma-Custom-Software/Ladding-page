@@ -102,3 +102,44 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 24px;
 }
+
+/* ---------- tipografia do carrossel (pagina de projetos: [data-type='heavy']) ---------- */
+.bigIndex {
+  display: none;
+}
+:global([data-type='heavy']) .bigIndex {
+  display: block;
+  position: absolute;
+  right: -0.04em;
+  top: clamp(40px, 8vh, 90px);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: clamp(220px, 32vw, 480px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(123, 108, 255, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+:global([data-type='heavy']) .light .bigIndex,
+:global([data-type='heavy']) .light.section .bigIndex {
+  -webkit-text-stroke-color: rgba(75, 57, 217, 0.14);
+}
+:global([data-type='heavy']) .h2 {
+  font-weight: 700;
+  font-size: clamp(40px, 5.6vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+}
+:global([data-type='heavy']) .projectsLabel {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+:global([data-type='heavy']) .dark .projectsLabel {
+  color: #b8ff3a;
+}
+:global([data-type='heavy']) .light .projectsLabel {
+  color: #4b39d9;
+}

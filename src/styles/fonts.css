@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
-  font-weight: 500 700;
+  font-weight: 100 900;
   font-display: swap;
   src: url('../assets/fonts/exo2-latin-ext.woff2') format('woff2');
   unicode-range:
@@ -16,7 +16,7 @@
 @font-face {
   font-family: 'Exo 2';
   font-style: normal;
-  font-weight: 500 700;
+  font-weight: 100 900;
   font-display: swap;
   src: url('../assets/fonts/exo2-latin.woff2') format('woff2');
   unicode-range:
@@ -28,7 +28,7 @@
 @font-face {
   font-family: 'Oswald';
   font-style: normal;
-  font-weight: 400 600;
+  font-weight: 200 700;
   font-display: swap;
   src: url('../assets/fonts/oswald-latin-ext.woff2') format('woff2');
   unicode-range:
@@ -41,7 +41,7 @@
 @font-face {
   font-family: 'Oswald';
   font-style: normal;
-  font-weight: 400 600;
+  font-weight: 200 700;
   font-display: swap;
   src: url('../assets/fonts/oswald-latin.woff2') format('woff2');
   unicode-range:
@@ -78,7 +78,7 @@
 @font-face {
   font-family: 'Roboto Mono';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 700;
   font-display: swap;
   src: url('../assets/fonts/robotomono-latin-ext.woff2') format('woff2');
   unicode-range:
@@ -91,7 +91,7 @@
 @font-face {
   font-family: 'Roboto Mono';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 700;
   font-display: swap;
   src: url('../assets/fonts/robotomono-latin.woff2') format('woff2');
   unicode-range:

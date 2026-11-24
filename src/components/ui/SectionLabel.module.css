@@ -20,3 +20,8 @@
 .dark {
   color: #f4f5f8;
 }
+
+/* tipografia do carrossel (pagina de projetos) */
+:global([data-type='heavy']) .text {
+  font-weight: 700;
+}

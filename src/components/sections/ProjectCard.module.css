@@ -147,3 +147,14 @@
 .dark .meta {
   color: rgba(244, 245, 248, 0.7);
 }
+
+/* tipografia do carrossel (pagina de projetos) */
+:global([data-type='heavy']) .title {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.05;
+}
+:global([data-type='heavy']) .kicker {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}

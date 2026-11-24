@@ -134,3 +134,17 @@ export function sectionTask(sections, a, now) {
 
 export const allSectionsDone = (sections) =>
   sections.length > 0 && sections.every((S) => S.started && S.items.every((it) => it.done));
+
+// Comprime o agendamento de uma secao ja iniciada para caber em `budget` ms a partir de `now`
+// (pagina de projetos: cada secao inteira construida em ate 1,5 s). Mantem ordem e proporcoes.
+export function compressSection(S, now, budget) {
+  const end = Math.max(...S.items.map((it) => it.e), now);
+  const span = end - now;
+  if (span <= budget) return S;
+  const k = budget / span;
+  for (const it of S.items) {
+    it.s = now + (it.s - now) * k;
+    it.e = now + (it.e - now) * k;
+  }
+  return S;
+}

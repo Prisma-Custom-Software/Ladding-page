@@ -7,7 +7,7 @@ import ServiceCard from './ServiceCard.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import styles from './ServiceSection.module.css';
 
-export default function ServiceSection({ service, id = 'software' }) {
+export default function ServiceSection({ service, id = 'software', agents }) {
   const s = service || services.find((x) => x.id === id) || services[0];
   const light = Boolean(s.light);
   const theme = light ? styles.light : styles.dark;
@@ -16,11 +16,15 @@ export default function ServiceSection({ service, id = 'software' }) {
       id={s.id}
       data-sec="1"
       {...(light ? { 'data-light': '1' } : {})}
-      data-ags={JSON.stringify(s.agents)}
+      data-ags={JSON.stringify(agents || s.agents)}
       data-screen-label={`${s.index} ${s.label}`}
       className={`${styles.section} ${theme}`}
     >
       {!light && <div className={styles.glow} />}
+      {/* numeral gigante vazado (so aparece na tipografia do carrossel, pagina de projetos) */}
+      <span className={styles.bigIndex} aria-hidden="true">
+        {s.index}
+      </span>
       <div className={styles.inner}>
         <div className={styles.head}>
           <div className={styles.headLeft}>

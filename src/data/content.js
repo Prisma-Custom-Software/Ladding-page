@@ -207,6 +207,18 @@ export const services = [
 ];
 
 export const projectsLabel = 'Projetos';
+
+// Pagina /projetos: extensao das secoes de servico, com a tipografia do carrossel.
+export const projectsPage = {
+  kicker: 'Portfólio · Prisma Technologies',
+  title: ['Projetos ', 'sob medida.'],
+  text: 'Software, motion e landing pages construídos do zero para cada cliente. Toque em um projeto para ver de perto.',
+  jump: [
+    { href: '#software', index: '01', label: 'Software' },
+    { href: '#motion', index: '02', label: 'Motion, carrossel e vídeo' },
+    { href: '#landing', index: '03', label: 'Landing pages' },
+  ],
+};
 export const projectPlaceholderLabel = (n) => `[ comprovação ${n} ]`;
 export const projectKicker = (n) => `Projeto ${n}`;
 export const projectViewer = {
