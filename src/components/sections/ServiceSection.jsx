@@ -6,14 +6,18 @@ import Tag from '../ui/Tag.jsx';
 import ServiceCard from './ServiceCard.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import ProjectFeature from './ProjectFeature.jsx';
+import BotsFeature from './BotsFeature.jsx';
 import styles from './ServiceSection.module.css';
 
-// features: mostra o destaque dos projetos que tem `feature` logo abaixo do cabecalho (pagina de projetos)
-// e tira esses projetos da grade.
+// features: mostra o destaque dos projetos que tem `feature` (ou `bots`) logo abaixo do cabecalho (pagina de
+// projetos) e tira esses projetos da grade; sem projeto sobrando, a grade some.
 export default function ServiceSection({ service, id = 'software', agents, features = false }) {
   const s = service || services.find((x) => x.id === id) || services[0];
   const light = Boolean(s.light);
   const theme = light ? styles.light : styles.dark;
+  const isFeatured = (p) => Boolean(p.feature || p.bots);
+  const featured = features ? s.projects.filter(isFeatured) : [];
+  const grid = features ? s.projects.filter((p) => !isFeatured(p)) : s.projects;
   return (
     <section
       id={s.id}
@@ -50,24 +54,30 @@ export default function ServiceSection({ service, id = 'software', agents, featu
           </div>
         </div>
         {features &&
-          s.projects
-            .filter((p) => p.feature)
-            .map((p, i) => <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} />)}
+          featured.map((p, i) =>
+            p.bots ? (
+              <BotsFeature key={p.n} project={p} light={light} />
+            ) : (
+              <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} />
+            ),
+          )}
         <div className={styles.cards}>
           {s.cards.map((c) => (
             <ServiceCard key={c.title} card={c} light={light} />
           ))}
         </div>
-        <div className={styles.projects}>
-          <span data-b="type" className={styles.projectsLabel}>
-            {projectsLabel}
-          </span>
-          <div className={styles.projectGrid}>
-            {s.projects.filter((p) => !(features && p.feature)).map((p) => (
-              <ProjectCard key={p.n} project={p} light={light} />
-            ))}
+        {grid.length > 0 && (
+          <div className={styles.projects}>
+            <span data-b="type" className={styles.projectsLabel}>
+              {projectsLabel}
+            </span>
+            <div className={styles.projectGrid}>
+              {grid.map((p) => (
+                <ProjectCard key={p.n} project={p} light={light} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -168,7 +168,88 @@ export const services = [
           tags: ['leads', 'IA', 'gamificação', 'eventos'],
         },
       },
-      { n: '03', title: 'Nome do projeto', meta: PROJECT_DESC, video: null },
+      {
+        n: '03',
+        title: 'Robôs de automação jurídica',
+        meta: 'Escritório de advocacia · 2026 · seis robôs em Python, Selenium e WhatsApp.',
+        video: null,
+        // Destaque na pagina de projetos: o que cada robo faz (informacoes tiradas do projeto dos robos).
+        // Sem os apelidos internos de personagens: cada robo e apresentado pela funcao.
+        bots: {
+          kicker: 'Em destaque',
+          name: 'Robôs de automação',
+          lead: 'Seis robôs que assumem o trabalho repetitivo de um escritório de advocacia. Cada um tem uma função e cuida dela sozinho, do sistema jurídico ao WhatsApp.',
+          list: [
+            {
+              name: 'Intimações',
+              role: 'Lê as intimações do dia, analisa com IA e cria as tarefas com prazo no sistema jurídico.',
+              does: [
+                'Captura as intimações de ontem; na segunda, o fim de semana inteiro.',
+                'A IA classifica o ato e escolhe a tarefa só da lista oficial do escritório.',
+                'Prazo fatal, D-2, embargos e recurso calculados em código, com feriados e recesso.',
+                'Lança tudo em um clique, com travas contra duplicata e conferência humana.',
+              ],
+              stack: ['Selenium', 'IA', 'prazos'],
+            },
+            {
+              name: 'Comprovantes',
+              role: 'Confere os comprovantes do setor previdenciário e atualiza as tarefas no fechamento do mês.',
+              does: [
+                'Filtra no calendário só as tarefas previdenciárias.',
+                'Lê os dados de cada comprovante e preenche a tarefa certa.',
+                'Modo ensaio: preenche a tela inteira sem gravar nada.',
+                'Grava só nos 3 últimos dias do mês, e só depois de confirmar.',
+              ],
+              stack: ['Selenium', 'previdenciário'],
+            },
+            {
+              name: 'Pesquisa CPF/CNPJ',
+              role: 'Recebe uma lista de pessoas por empresa e faz as pesquisas de processos no portal de consulta.',
+              does: [
+                'Valida cada CPF e CNPJ antes de pagar a pesquisa: dígito verificador e repetidos.',
+                'Um pedido por pessoa; se a sessão cair, entra de novo e continua de onde parou.',
+                'Baixa o PDF e a planilha de resultados de cada pessoa.',
+                'Fecha com um relatório dos processos por empresa, em HTML, PDF e CSV.',
+              ],
+              stack: ['Selenium', 'PDF', 'CSV'],
+            },
+            {
+              name: 'Relatório mensal',
+              role: 'Monta todo mês uma planilha por grupo de clientes, com o raio-x de cada processo.',
+              does: [
+                'Abre cada processo do grupo: dados, partes e tarefas.',
+                'A IA resume o caso, a parte financeira e os documentos que faltam.',
+                'Uma planilha .xlsx por grupo, com resumo e cadastros incompletos.',
+                'Usuário próprio, só de leitura: não altera nada no sistema.',
+              ],
+              stack: ['IA', 'xlsx', 'só leitura'],
+            },
+            {
+              name: 'Relatório do dia',
+              role: 'Todo dia de manhã, entrega o que a equipe precisa olhar, sem tocar em nada.',
+              does: [
+                'Só lê: bloqueia qualquer envio antes do login e para se o bloqueio cair.',
+                'Agenda de hoje e amanhã, prazos atrasados e intimações esquecidas.',
+                'Lista os processos parados e confere as pesquisas feitas no mês.',
+                'Painel semanal em PDF: taxa de resolução e carga de cada advogado.',
+              ],
+              stack: ['só leitura', 'PDF', 'agendado'],
+            },
+            {
+              name: 'WhatsApp previdenciário',
+              role: 'Atende os clientes do setor previdenciário no WhatsApp, de dia e fora do expediente.',
+              does: [
+                'Responde documentos, perícia, prazos, RPV, Meu INSS e golpes com textos aprovados pelo setor.',
+                'Sem IA: menu numerado e palavras-chave, nenhuma resposta inventada.',
+                'O que é do caso da pessoa vai direto para a equipe.',
+                'Consulta a fase do processo sem que CPF, nome ou número saiam do escritório.',
+              ],
+              stack: ['WhatsApp', 'Node', 'privacidade'],
+            },
+          ],
+          tags: ['Python', 'Selenium', 'IA', 'WhatsApp'],
+        },
+      },
     ],
   },
   {
