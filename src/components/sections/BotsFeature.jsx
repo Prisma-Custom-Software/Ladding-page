@@ -27,13 +27,14 @@ function BotPortrait({ col, seed }) {
   return <canvas ref={ref} className={styles.bot} style={{ width: BOT_W, height: BOT_H }} aria-hidden="true" />;
 }
 
-export default function BotsFeature({ project, light = false }) {
+// blk: atributos de bloco de construcao; o cabecalho e a grade sao construidos separados.
+export default function BotsFeature({ project, light = false, blk = {} }) {
   const b = project.bots;
   const theme = light ? styles.light : styles.dark;
   const last = Math.max(1, b.list.length - 1);
   return (
     <div className={`${styles.feature} ${theme}`} data-feature={project.n}>
-      <div className={styles.head}>
+      <div className={styles.head} {...blk}>
         <span data-b="type" className={styles.kicker}>
           {projectKicker(project.n)} · {b.kicker}
         </span>
@@ -51,7 +52,7 @@ export default function BotsFeature({ project, light = false }) {
           ))}
         </div>
       </div>
-      <ol className={styles.grid}>
+      <ol className={styles.grid} {...blk}>
         {b.list.map((bot, i) => (
           <li key={bot.name} data-b="block" className={styles.card} style={{ '--i': i }}>
             <div className={styles.cardHead}>

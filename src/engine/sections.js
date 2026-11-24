@@ -28,7 +28,8 @@ export function initSections(root) {
     } catch {
       /* mantem [0,1] */
     }
-    const items = [...el.querySelectorAll('[data-b]')].map((x) => ({
+    // secoes aninhadas: cada item pertence so a secao [data-sec] mais proxima
+    const items = [...el.querySelectorAll('[data-b]')].filter((x) => x.parentElement.closest('[data-sec]') === el).map((x) => ({
       el: x,
       kind: x.getAttribute('data-b'),
       done: false,
@@ -136,7 +137,7 @@ export const allSectionsDone = (sections) =>
   sections.length > 0 && sections.every((S) => S.started && S.items.every((it) => it.done));
 
 // Comprime o agendamento de uma secao ja iniciada para caber em `budget` ms a partir de `now`
-// (pagina de projetos: cada secao inteira construida em ate 1,5 s). Mantem ordem e proporcoes.
+// (pagina de projetos: cada bloco construido em ate BUDGET ms). Mantem ordem e proporcoes.
 export function compressSection(S, now, budget) {
   const end = Math.max(...S.items.map((it) => it.e), now);
   const span = end - now;

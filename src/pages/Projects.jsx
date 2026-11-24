@@ -1,5 +1,5 @@
 // Pagina /projetos: extensao das secoes de servico da home com a tipografia do carrossel Prisma
-// (Oswald 700, Exo 2 900, Roboto Mono 700). Construida pelos robos do carrossel em ate 2 s por secao.
+// (Oswald 700, Exo 2 900, Roboto Mono 700). Construida pelos robos do carrossel, bloco a bloco, em ate 3,5 s cada.
 import { useEffect, useRef } from 'react';
 import PageRoot from '../components/ui/PageRoot.jsx';
 import SectionLabel from '../components/ui/SectionLabel.jsx';

@@ -1,5 +1,6 @@
-// Construcao da pagina de projetos pelos robos: cada secao ([data-sec]) comeca quando entra na tela e fica
-// pronta em ate BUDGET ms, com os cinco robos dividindo os itens ([data-b]). Quando tudo esta construido os
+// Construcao da pagina de projetos pelos robos: cada bloco ([data-sec]: cabecalho, destaque, cartoes) comeca
+// quando entra na tela e fica pronto em ate BUDGET ms, com os cinco robos dividindo os itens ([data-b]).
+// Blocos pequenos nao sao acelerados: so os que passariam de BUDGET sao comprimidos. Quando tudo esta construido os
 // robos saem pela borda direita e o loop para.
 import { useEffect } from 'react';
 import { subscribe } from '../engine/loop.js';
@@ -7,8 +8,20 @@ import { createSparks } from '../engine/sparks.js';
 import { initSections, startSection, compressSection, updateSections, allSectionsDone, setItem } from '../engine/sections.js';
 import { createRobots, stepRobot } from '../engine/robotAgents.js';
 
-export const BUDGET = 2000;
+export const BUDGET = 3500;
+// cada item leva SLOW vezes o tempo da home, para dar para acompanhar os robos trabalhando
+export const SLOW = 1.6;
 const ROBOTS = [0, 1, 2, 3, 4];
+// tres robos por bloco (revezando), para o trabalho nao acontecer todo de uma vez
+const crew = (j) => [0, 1, 2].map((k) => ROBOTS[(j + k) % ROBOTS.length]);
+
+// Estica o agendamento de uma secao recem-iniciada em `k` vezes a partir de `now`.
+function stretch(S, now, k) {
+  for (const it of S.items) {
+    it.s = now + (it.s - now) * k;
+    it.e = now + (it.e - now) * k;
+  }
+}
 
 const reduceMotion = () =>
   typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,7 +45,7 @@ export function useProjectsBuild(rootRef, canvasRef) {
     const root = rootRef.current;
     const canvas = canvasRef.current;
     const sections = initSections(root);
-    sections.forEach((S) => (S.pair = ROBOTS));
+    sections.forEach((S, j) => (S.pair = crew(j)));
     if (!canvas || reduceMotion()) {
       revealAll(sections);
       return undefined;
@@ -60,6 +73,7 @@ export function useProjectsBuild(rootRef, canvasRef) {
         const r = S.el.getBoundingClientRect();
         if ((r.top < h * 0.85 || (atBottom && r.top < h)) && r.bottom > 0) {
           startSection(S, now);
+          stretch(S, now, SLOW);
           compressSection(S, now, BUDGET);
         }
       }

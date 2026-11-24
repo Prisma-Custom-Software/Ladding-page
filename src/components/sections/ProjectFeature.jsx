@@ -7,11 +7,12 @@ import { projectKicker } from '../../data/content.js';
 import styles from './ProjectFeature.module.css';
 
 // reverse: midia a direita (alterna os destaques para dar ritmo).
-export default function ProjectFeature({ project, light = false, reverse = false }) {
+// blk: atributos de bloco de construcao (pagina de projetos).
+export default function ProjectFeature({ project, light = false, reverse = false, blk = {} }) {
   const f = project.feature;
   const theme = light ? styles.light : styles.dark;
   return (
-    <div className={`${styles.feature} ${theme} ${reverse ? styles.reverse : ''}`} data-feature={project.n}>
+    <div className={`${styles.feature} ${theme} ${reverse ? styles.reverse : ''}`} data-feature={project.n} {...blk}>
       <div className={styles.media}>
         <ProjectCard project={project} light={light} bare />
       </div>

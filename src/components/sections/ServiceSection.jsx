@@ -18,6 +18,8 @@ export default function ServiceSection({ service, id = 'software', agents, featu
   const isFeatured = (p) => Boolean(p.feature || p.bots);
   const featured = features ? s.projects.filter(isFeatured) : [];
   const grid = features ? s.projects.filter((p) => !isFeatured(p)) : s.projects;
+  // na pagina de projetos cada bloco e construido quando entra na tela (ver useProjectsBuild)
+  const blk = features ? { 'data-sec': '1', ...(light ? { 'data-light': '1' } : {}) } : {};
   return (
     <section
       id={s.id}
@@ -33,7 +35,7 @@ export default function ServiceSection({ service, id = 'software', agents, featu
         {s.index}
       </span>
       <div className={styles.inner}>
-        <div className={styles.head}>
+        <div className={styles.head} {...blk}>
           <div className={styles.headLeft}>
             <SectionLabel light={light}>{`${s.index} / ${s.label}`}</SectionLabel>
             <h2 data-b="type" className={styles.h2}>
@@ -56,18 +58,18 @@ export default function ServiceSection({ service, id = 'software', agents, featu
         {features &&
           featured.map((p, i) =>
             p.bots ? (
-              <BotsFeature key={p.n} project={p} light={light} />
+              <BotsFeature key={p.n} project={p} light={light} blk={blk} />
             ) : (
-              <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} />
+              <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} blk={blk} />
             ),
           )}
-        <div className={styles.cards}>
+        <div className={styles.cards} {...blk}>
           {s.cards.map((c) => (
             <ServiceCard key={c.title} card={c} light={light} />
           ))}
         </div>
         {grid.length > 0 && (
-          <div className={styles.projects}>
+          <div className={styles.projects} {...blk}>
             <span data-b="type" className={styles.projectsLabel}>
               {projectsLabel}
             </span>
