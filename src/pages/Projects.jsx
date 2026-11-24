@@ -53,7 +53,7 @@ export default function Projects() {
             </div>
           </header>
           {services.map((s) => (
-            <ServiceSection key={s.id} service={s} agents={ALL_ROBOTS} />
+            <ServiceSection key={s.id} service={s} agents={ALL_ROBOTS} features />
           ))}
           <ContactBlock />
         </div>

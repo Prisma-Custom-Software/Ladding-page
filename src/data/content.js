@@ -94,7 +94,43 @@ export const services = [
       },
     ],
     projects: [
-      { n: '01', title: 'Sistema de ponto', meta: PROJECT_DESC, video: ponto, webm: pontoWebm, poster: pontoPoster },
+      {
+        n: '01',
+        title: 'Sistema de ponto',
+        meta: PROJECT_DESC,
+        video: ponto,
+        webm: pontoWebm,
+        poster: pontoPoster,
+        // Destaque na pagina de projetos (informacoes tiradas do proprio video do produto).
+        feature: {
+          kicker: 'Em destaque',
+          name: 'Atlas Ponto',
+          lead: 'O ponto eletrônico do RFeitosa Group. Bata o ponto em um toque, direto do celular.',
+          highlights: [
+            {
+              title: 'Offline-first',
+              text: 'Sem internet, bate do mesmo jeito: o registro fica cifrado no aparelho e sincroniza sozinho.',
+              icon: 'M1 1l22 22 M16.72 11.06A10.94 10.94 0 0 1 19 12.55 M5 12.55a10.94 10.94 0 0 1 5.17-2.39 M10.71 5.05A16 16 0 0 1 22.58 9 M1.42 9a15.91 15.91 0 0 1 4.7-2.88 M8.53 16.11a6 6 0 0 1 6.95 0 M12 20h.01',
+            },
+            {
+              title: 'Blindado para auditoria',
+              text: 'Ponto registrado não se apaga: Portaria 671/2021 (REP-P), NSR sequencial e cadeia de hash SHA-256.',
+              icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4',
+            },
+            {
+              title: 'Antifraude',
+              text: 'Verificação de GPS e de relógio no momento do registro.',
+              icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+            },
+            {
+              title: 'Privacidade e app',
+              text: 'CPF sempre mascarado, modo escuro e instalação como app (PWA) na tela inicial.',
+              icon: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4',
+            },
+          ],
+          tags: ['PWA', 'offline-first', 'REP-P', 'SHA-256'],
+        },
+      },
       { n: '02', title: 'Connect App', meta: PROJECT_DESC, video: connectApp, webm: connectAppWebm, poster: connectAppPoster },
       { n: '03', title: 'Nome do projeto', meta: PROJECT_DESC, video: null },
     ],

@@ -158,3 +158,9 @@
   font-weight: 700;
   letter-spacing: 0.06em;
 }
+
+/* so a midia (destaque da pagina de projetos) */
+.bare {
+  padding: 10px;
+  gap: 0;
+}

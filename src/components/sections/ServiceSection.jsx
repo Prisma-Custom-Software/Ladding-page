@@ -5,9 +5,12 @@ import SectionLabel from '../ui/SectionLabel.jsx';
 import Tag from '../ui/Tag.jsx';
 import ServiceCard from './ServiceCard.jsx';
 import ProjectCard from './ProjectCard.jsx';
+import ProjectFeature from './ProjectFeature.jsx';
 import styles from './ServiceSection.module.css';
 
-export default function ServiceSection({ service, id = 'software', agents }) {
+// features: mostra o destaque dos projetos que tem `feature` logo abaixo do cabecalho (pagina de projetos)
+// e tira esses projetos da grade.
+export default function ServiceSection({ service, id = 'software', agents, features = false }) {
   const s = service || services.find((x) => x.id === id) || services[0];
   const light = Boolean(s.light);
   const theme = light ? styles.light : styles.dark;
@@ -46,6 +49,8 @@ export default function ServiceSection({ service, id = 'software', agents }) {
             </div>
           </div>
         </div>
+        {features &&
+          s.projects.filter((p) => p.feature).map((p) => <ProjectFeature key={p.n} project={p} light={light} />)}
         <div className={styles.cards}>
           {s.cards.map((c) => (
             <ServiceCard key={c.title} card={c} light={light} />
@@ -56,7 +61,7 @@ export default function ServiceSection({ service, id = 'software', agents }) {
             {projectsLabel}
           </span>
           <div className={styles.projectGrid}>
-            {s.projects.map((p) => (
+            {s.projects.filter((p) => !(features && p.feature)).map((p) => (
               <ProjectCard key={p.n} project={p} light={light} />
             ))}
           </div>

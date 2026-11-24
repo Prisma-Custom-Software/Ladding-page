@@ -29,7 +29,7 @@ export function createRobots(n, h) {
 // Em tela estreita estacionam meio escondidos na borda para nao cobrir o texto.
 export function idleSpot(i, { w, h, T }) {
   const narrow = w < 700;
-  const x = narrow ? w - 4 : w - 56 - (i % 2) * 46;
+  const x = narrow ? w - 4 : w - 24 - (i % 2) * 18;
   return [x + Math.sin(T * 1.6 + i * 2) * (narrow ? 3 : 8), h * (0.26 + 0.12 * i) + Math.cos(T * 1.3 + i) * 10];
 }
 
@@ -133,7 +133,7 @@ export function stepRobot(ctx, a, i, p) {
     seed: i * 3,
     happy: exiting,
   });
-  if (!task && !exiting && w < 700) return; // ocioso no celular: sem rotulo
+  if (!task && !exiting) return; // ocioso: sem rotulo, como os agentes da home depois da intro
   const lbl = exiting ? 'commit()' : task ? task.lbl : 'await()';
   drawAgentLabel(ctx, { ...a, y: a.y - 12, x: a.x + 8 }, lbl, Boolean(task) || exiting, w);
 }

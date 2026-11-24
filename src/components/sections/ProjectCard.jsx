@@ -5,7 +5,8 @@ import ProjectViewer from './ProjectViewer.jsx';
 import styles from './ProjectCard.module.css';
 
 // Card de projeto: video (object-fit:contain) ou placeholder listrado.
-export default function ProjectCard({ project, light = false }) {
+// bare: so a midia (usado no destaque da pagina de projetos, que tem o proprio texto).
+export default function ProjectCard({ project, light = false, bare = false }) {
   const theme = light ? styles.light : styles.dark;
   const hasVideo = Boolean(project.video);
   const videoRef = useRef(null);
@@ -55,7 +56,7 @@ export default function ProjectCard({ project, light = false }) {
     triggerRef.current?.focus({ preventScroll: true });
   }, []);
   return (
-    <article data-b="block" className={`${styles.card} ${theme}`}>
+    <article data-b="block" className={`${styles.card} ${theme} ${bare ? styles.bare : ''}`}>
       <div
         ref={mediaRef}
         className={`${styles.media} ${hasVideo ? styles.withVideo : styles.placeholder} ${viewer ? styles.lifted : ''}`}
@@ -111,11 +112,13 @@ export default function ProjectCard({ project, light = false }) {
           onClosed={onClosed}
         />
       )}
-      <div className={styles.info}>
-        <span className={styles.kicker}>{projectKicker(project.n)}</span>
-        <h3 className={styles.title}>{project.title}</h3>
-        <p className={styles.meta}>{project.meta}</p>
-      </div>
+      {!bare && (
+        <div className={styles.info}>
+          <span className={styles.kicker}>{projectKicker(project.n)}</span>
+          <h3 className={styles.title}>{project.title}</h3>
+          <p className={styles.meta}>{project.meta}</p>
+        </div>
+      )}
     </article>
   );
 }
