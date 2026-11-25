@@ -3,6 +3,10 @@
   flex-direction: column;
   gap: clamp(28px, 4vw, 44px);
 }
+/* respiro extra entre o motion de exemplo e o cabecalho dos robos */
+.demo {
+  margin-bottom: clamp(12px, 3vw, 36px);
+}
 .head {
   display: flex;
   flex-direction: column;

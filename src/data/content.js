@@ -15,6 +15,9 @@ import institucionalPoster from '../assets/video/institucional-poster.webp';
 import carrossel from '../assets/video/carrossel.mp4';
 import carrosselWebm from '../assets/video/carrossel.webm';
 import carrosselPoster from '../assets/video/carrossel-poster.webp';
+import botsSam from '../assets/video/bots-sam.mp4';
+import botsSamWebm from '../assets/video/bots-sam.webm';
+import botsSamPoster from '../assets/video/bots-sam-poster.webp';
 
 // Slides do carrossel animado (um MP4 por slide, 4:5), abertos no visualizador interativo.
 const carrosselSlides = Object.entries(
@@ -179,6 +182,38 @@ export const services = [
           kicker: 'Em destaque',
           name: 'Robôs de automação',
           lead: 'Seis robôs que assumem o trabalho repetitivo de um escritório de advocacia. Cada um tem uma função e cuida dela sozinho, do sistema jurídico ao WhatsApp.',
+          // Motion de exemplo (robo de intimacoes do login a tarefa pronta), mostrado acima dos cartoes dos robos.
+          // Renderizado do motion em codigo em ~/Documentos/motion-desing/motion-bots/.
+          demo: {
+            n: '03',
+            title: 'Robô de intimações em ação',
+            video: botsSam,
+            webm: botsSamWebm,
+            poster: botsSamPoster,
+            feature: {
+              kicker: 'Em ação',
+              name: 'Da intimação à tarefa',
+              lead: 'Um exemplo do robô de intimações trabalhando do começo ao fim: entra no sistema jurídico, captura as intimações do dia e a IA transforma cada uma em tarefa com prazo e responsável.',
+              highlights: [
+                {
+                  title: 'Entra no sistema',
+                  text: 'Faz o login sozinho no sistema jurídico do escritório, campo por campo.',
+                  icon: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4',
+                },
+                {
+                  title: 'Captura as intimações',
+                  text: 'Abre o menu de intimações e coleta as publicações do dia em uma varredura.',
+                  icon: 'M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5',
+                },
+                {
+                  title: 'IA lê e cria as tarefas',
+                  text: 'Lê cada documento, preenche tarefa, prazo e responsável e lança tudo no sistema.',
+                  icon: 'M4 12l5 5L20 6',
+                },
+              ],
+              tags: ['login', 'intimações', 'IA', 'tarefas'],
+            },
+          },
           list: [
             {
               name: 'Intimações',

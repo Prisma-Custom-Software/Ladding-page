@@ -3,6 +3,7 @@
 // robos da pagina construirem.
 import { useEffect, useRef } from 'react';
 import Tag from '../ui/Tag.jsx';
+import ProjectFeature from './ProjectFeature.jsx';
 import { projectKicker } from '../../data/content.js';
 import { drawMiniBot } from '../../engine/drawMiniBot.js';
 import { mix } from '../../engine/math.js';
@@ -34,6 +35,12 @@ export default function BotsFeature({ project, light = false, blk = {} }) {
   const last = Math.max(1, b.list.length - 1);
   return (
     <div className={`${styles.feature} ${theme}`} data-feature={project.n}>
+      {/* motion de exemplo dos robos em uso, acima da explicacao de cada robo */}
+      {b.demo && (
+        <div className={styles.demo}>
+          <ProjectFeature project={b.demo} light={light} blk={blk} />
+        </div>
+      )}
       <div className={styles.head} {...blk}>
         <span data-b="type" className={styles.kicker}>
           {projectKicker(project.n)} · {b.kicker}
