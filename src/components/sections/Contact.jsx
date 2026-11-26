@@ -22,11 +22,22 @@ export default function Contact() {
         </p>
         <div className={styles.ctas}>
           {contact.ctas.map((c) => (
-            <Button key={c.label} variant={c.variant} size="lg" href={c.href} data-b="block">
+            <Button
+              key={c.label}
+              variant={c.variant}
+              size="lg"
+              href={c.href}
+              target={c.target}
+              rel={c.rel}
+              data-b="block"
+            >
               {c.label}
             </Button>
           ))}
         </div>
+        <a href={`tel:${contact.phone.tel}`} className={styles.phone} data-b="type">
+          {contact.phone.label}
+        </a>
       </div>
     </section>
   );

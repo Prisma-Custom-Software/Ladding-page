@@ -487,14 +487,24 @@ export const carouselViewer = {
   hint: 'Arraste ou use as setas',
 };
 
+// Telefone de contato (WhatsApp e ligacao).
+const PHONE = { label: '+55 88 9294-9148', tel: '+558892949148', whatsapp: 'https://wa.me/558892949148' };
+
 export const contact = {
   title: ['Qual tarefa você quer', 'nunca mais fazer?'],
   text: 'Conte como ela é feita hoje, ou mande a ideia do vídeo ou da página. A gente responde com por onde começar e quanto custa.',
   email: 'contato@prisma.tech',
   ctas: [
     { variant: 'primary', label: 'Pedir orçamento', href: 'mailto:contato@prisma.tech' },
-    { variant: 'ghost', label: 'Chamar no WhatsApp', href: '#' },
+    {
+      variant: 'ghost',
+      label: 'Chamar no WhatsApp',
+      href: PHONE.whatsapp,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
   ],
+  phone: PHONE,
 };
 
 // Os hrefs apontam para as rotas do app React (ver pages/Placeholder.jsx).
@@ -518,6 +528,7 @@ export const menu = {
   ],
   contactLabel: 'Fale com a gente',
   email: 'contato@prisma.tech',
+  phone: PHONE,
   cta: 'Pedir orçamento',
   close: 'Fechar',
   open: 'Menu',

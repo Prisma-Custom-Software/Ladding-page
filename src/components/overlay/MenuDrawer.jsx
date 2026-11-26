@@ -134,6 +134,9 @@ export default function MenuDrawer() {
             <a href={`mailto:${menu.email}`} className={styles.email}>
               {menu.email}
             </a>
+            <a href={`tel:${menu.phone.tel}`} className={styles.email}>
+              {menu.phone.label}
+            </a>
           </div>
           <a href="#contato" onClick={closeNav} className={styles.cta}>
             {menu.cta}
