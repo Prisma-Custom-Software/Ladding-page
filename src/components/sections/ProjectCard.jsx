@@ -116,7 +116,7 @@ export default function ProjectCard({ project, light = false, bare = false }) {
         <div className={styles.info}>
           <span className={styles.kicker}>{projectKicker(project.n)}</span>
           <h3 className={styles.title}>{project.title}</h3>
-          {project.meta && <p className={styles.meta}>{project.meta}</p>}
+          <p className={styles.meta}>{project.meta}</p>
         </div>
       )}
     </article>
