@@ -5,7 +5,7 @@ export const PRISM0 = 2600;
 export const PRISM1 = 6600;
 export const GATHER = 6700;
 export const END = 7300;
-export const SPEED = 2.1;
+export const SPEED = 4.5;
 
 // Janelas [inicio, fim] (em progresso b do prisma, 0..1) de cada parte do desenho.
 export const PW = {

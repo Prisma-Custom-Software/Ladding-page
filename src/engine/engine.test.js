@@ -8,7 +8,7 @@ import { createAgents, idleTarget, pickTop, chipMessage } from './agents.js';
 
 describe('timeline', () => {
   it('constantes do modelo', () => {
-    expect([PRISM0, PRISM1, GATHER, END, SPEED]).toEqual([2600, 6600, 6700, 7300, 2.1]);
+    expect([PRISM0, PRISM1, GATHER, END, SPEED]).toEqual([2600, 6600, 6700, 7300, 4.5]);
     expect(PW.apex).toEqual([0.88, 1]);
     expect(pb(2600)).toBe(0);
     expect(pb(4600)).toBe(0.5);

@@ -66,12 +66,15 @@ export function startSection(S, now) {
 }
 
 // sparks: objeto de createSparks(). ctx: canvas 2D dos agentes.
-export function updateSections(sections, now, ctx, sparks) {
+// budget (opcional): cada secao fica pronta em ate `budget` ms depois de entrar na tela (ver compressSection).
+export function updateSections(sections, now, ctx, sparks, budget) {
   for (const S of sections) {
     if (!S.started) {
       const r = S.el.getBoundingClientRect();
-      if (r.top < innerHeight * 0.8 && r.bottom > 0) startSection(S, now);
-      else continue;
+      if (r.top < innerHeight * 0.8 && r.bottom > 0) {
+        startSection(S, now);
+        if (budget) compressSection(S, now, budget);
+      } else continue;
     }
     for (const it of S.items) {
       if (it.done) continue;

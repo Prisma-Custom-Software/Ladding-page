@@ -1,11 +1,11 @@
 // Relogio do prisma. Com `getState` externo (intro, T09) usa o estado dele; sem ele roda standalone com o
-// mesmo relogio do original: inicio 250 ms apos montar, t = delta * 2.1, b = seg(t, 2600, 6600).
+// mesmo relogio do original: inicio 250 ms apos montar, t = delta * 4.5, b = seg(t, 2600, 6600).
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { seg } from '../../../engine/math.js';
 
 export const PRISM0 = 2600;
 export const PRISM1 = 6600;
-export const SPEED = 2.1;
+export const SPEED = 4.5;
 export const END = 7300;
 export const STANDALONE_DELAY = 250;
 

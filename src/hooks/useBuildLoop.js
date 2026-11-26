@@ -12,6 +12,9 @@ import { initSections, updateSections, allSectionsDone, startSection, setItem } 
 import { markIntroSeen, shouldSkipIntro } from './useIntroSeen.js';
 import { useScrollLock } from './useScrollLock.js';
 
+// Tempo maximo (ms) para construir cada secao da home quando ela entra na tela.
+export const SECTION_BUDGET = 1800;
+
 export function useBuildLoop(build) {
   const lock = useScrollLock(() => {
     const s = build.refs.current.root;
@@ -153,7 +156,7 @@ export function useBuildLoop(build) {
           ctx.fillRect(cr[0], cr[1] - cr[2] * 0.42, 2, cr[2] * 0.84);
         }
       }
-      if (st.complete) updateSections(sections, now, ctx, sparks);
+      if (st.complete) updateSections(sections, now, ctx, sparks, SECTION_BUDGET);
       const api = build.prismApi;
       let pc = api && api.getCenter ? api.getCenter() : null;
       if (!pc) pc = center(R.prism);

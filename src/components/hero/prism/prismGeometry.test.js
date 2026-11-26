@@ -86,7 +86,7 @@ describe('prismGeometry', () => {
   it('hexToRgb e relogio standalone', () => {
     expect(hexToRgb('#FF0000')).toEqual([1, 0, 0]);
     expect(standaloneState(1000, 1000).b).toBe(0);
-    expect(standaloneState(0, (PRISM1 / 2.1) + 1).b).toBe(1);
-    expect(standaloneState(0, PRISM0 / 2.1).b).toBeCloseTo(0);
+    expect(standaloneState(0, (PRISM1 / 4.5) + 1).b).toBe(1);
+    expect(standaloneState(0, PRISM0 / 4.5).b).toBeCloseTo(0);
   });
 });
