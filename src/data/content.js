@@ -60,10 +60,6 @@ export const about = {
   ],
 };
 
-const PROJECT_DESC = 'Cliente · ano · breve descrição do resultado.';
-const placeholderProjects = (name = 'Nome do projeto') =>
-  ['01', '02', '03'].map((n) => ({ n, title: name, meta: PROJECT_DESC, video: null }));
-
 export const services = [
   {
     id: 'software',
@@ -151,7 +147,6 @@ export const services = [
       {
         n: '01',
         title: 'Sistema de ponto',
-        meta: PROJECT_DESC,
         video: ponto,
         webm: pontoWebm,
         poster: pontoPoster,
@@ -188,7 +183,6 @@ export const services = [
       {
         n: '02',
         title: 'Connect App',
-        meta: PROJECT_DESC,
         video: connectApp,
         webm: connectAppWebm,
         poster: connectAppPoster,
@@ -458,7 +452,6 @@ export const services = [
           tags: ['instagram', '4:5', '6 slides', 'loop'],
         },
       },
-      ...placeholderProjects().slice(2),
     ],
   },
   {
@@ -502,7 +495,8 @@ export const services = [
         icon: 'M22 7 13.5 15.5 8.5 10.5 2 17 M16 7h6v6',
       },
     ],
-    projects: placeholderProjects(),
+    // Projetos de landing page entram aqui quando houver casos reais (a grade some enquanto a lista estiver vazia).
+    projects: [],
   },
 ];
 
