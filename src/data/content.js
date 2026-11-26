@@ -175,7 +175,10 @@ export const services = [
         n: '03',
         title: 'Robôs de automação jurídica',
         meta: 'Escritório de advocacia · 2026 · seis robôs em Python, Selenium e WhatsApp.',
-        video: null,
+        // Card da home: o motion do robo de intimacoes (o mesmo do destaque na pagina de projetos).
+        video: botsSam,
+        webm: botsSamWebm,
+        poster: botsSamPoster,
         // Destaque na pagina de projetos: o que cada robo faz (informacoes tiradas do projeto dos robos).
         // Sem os apelidos internos de personagens: cada robo e apresentado pela funcao.
         bots: {
