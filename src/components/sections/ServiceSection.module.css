@@ -103,6 +103,160 @@
   gap: 24px;
 }
 
+/* grupo: rotulo + conteudo (o que fazemos, operacao, processo) */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* antes -> depois (o que muda na operacao) */
+.ops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.op {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  align-items: center;
+}
+.light .op {
+  box-shadow: 0 0 0 0.5px rgba(11, 18, 32, 0.16);
+}
+.dark .op {
+  box-shadow: 0 0 0 0.5px rgba(244, 245, 248, 0.14);
+}
+.opBefore,
+.opAfter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 22px 24px;
+}
+.light .opAfter {
+  background: #ffffff;
+}
+.dark .opAfter {
+  background: rgba(123, 108, 255, 0.08);
+}
+.opTag {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.light .opBefore .opTag {
+  color: rgba(11, 18, 32, 0.5);
+}
+.dark .opBefore .opTag {
+  color: rgba(244, 245, 248, 0.5);
+}
+.light .opAfter .opTag {
+  color: #4b39d9;
+}
+.dark .opAfter .opTag {
+  color: #b8ff3a;
+}
+.opText {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.light .opBefore .opText {
+  color: rgba(11, 18, 32, 0.6);
+}
+.dark .opBefore .opText {
+  color: rgba(244, 245, 248, 0.6);
+}
+.light .opAfter .opText {
+  color: #0b1220;
+  font-weight: 500;
+}
+.dark .opAfter .opText {
+  color: #f4f5f8;
+  font-weight: 500;
+}
+.opArrow {
+  justify-self: center;
+}
+.light .opArrow {
+  color: #4b39d9;
+}
+.dark .opArrow {
+  color: #b8ff3a;
+}
+@media (max-width: 640px) {
+  .op {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .opArrow {
+    transform: rotate(90deg);
+    margin: -4px 0;
+  }
+}
+
+/* como trabalhamos */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 0;
+}
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 24px 28px;
+}
+.light .step {
+  box-shadow: 0 0 0 0.5px rgba(11, 18, 32, 0.16);
+}
+.dark .step {
+  box-shadow: 0 0 0 0.5px rgba(244, 245, 248, 0.14);
+}
+.stepN {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+}
+.light .stepN {
+  color: #4b39d9;
+}
+.dark .stepN {
+  color: #7b6cff;
+}
+.stepTitle {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+  text-transform: uppercase;
+}
+.stepText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.light .stepTitle {
+  color: #0b1220;
+}
+.light .stepText {
+  color: rgba(11, 18, 32, 0.7);
+}
+.dark .stepTitle {
+  color: #f4f5f8;
+}
+.dark .stepText {
+  color: rgba(244, 245, 248, 0.7);
+}
+
 /* ---------- tipografia do carrossel (pagina de projetos: [data-type='heavy']) ---------- */
 .bigIndex {
   display: none;

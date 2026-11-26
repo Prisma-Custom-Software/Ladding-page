@@ -17,7 +17,14 @@ export default function ServiceSection({ service, id = 'software', agents, featu
   const theme = light ? styles.light : styles.dark;
   const isFeatured = (p) => Boolean(p.feature || p.bots);
   const featured = features ? s.projects.filter(isFeatured) : [];
-  const grid = features ? s.projects.filter((p) => !isFeatured(p)) : s.projects;
+  const grid = features
+    ? s.projects.filter((p) => !isFeatured(p))
+    : s.homeProjects === false
+      ? []
+      : s.projects;
+  // blocos de operacao e processo: so na home (na pagina de projetos o foco sao os projetos)
+  const operation = !features && s.operation;
+  const process = !features && s.process;
   // na pagina de projetos cada bloco e construido quando entra na tela (ver useProjectsBuild)
   const blk = features ? { 'data-sec': '1', ...(light ? { 'data-light': '1' } : {}) } : {};
   return (
@@ -63,11 +70,71 @@ export default function ServiceSection({ service, id = 'software', agents, featu
               <ProjectFeature key={p.n} project={p} light={light} reverse={i % 2 === 1} blk={blk} />
             ),
           )}
-        <div className={styles.cards} {...blk}>
-          {s.cards.map((c) => (
-            <ServiceCard key={c.title} card={c} light={light} />
-          ))}
+        <div className={styles.group} {...blk}>
+          {!features && s.cardsLabel && (
+            <span data-b="type" className={styles.projectsLabel}>
+              {s.cardsLabel}
+            </span>
+          )}
+          <div className={styles.cards}>
+            {s.cards.map((c) => (
+              <ServiceCard key={c.title} card={c} light={light} />
+            ))}
+          </div>
         </div>
+        {operation && (
+          <div className={styles.group}>
+            <span data-b="type" className={styles.projectsLabel}>
+              {operation.label}
+            </span>
+            <ol className={styles.ops}>
+              {operation.items.map((it) => (
+                <li key={it.after} data-b="block" className={styles.op}>
+                  <div className={styles.opBefore}>
+                    <span className={styles.opTag}>{operation.before}</span>
+                    <p className={styles.opText}>{it.before}</p>
+                  </div>
+                  <svg
+                    className={styles.opArrow}
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h14 M13 5l7 7-7 7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <div className={styles.opAfter}>
+                    <span className={styles.opTag}>{operation.after}</span>
+                    <p className={styles.opText}>{it.after}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+        {process && (
+          <div className={styles.group}>
+            <span data-b="type" className={styles.projectsLabel}>
+              {process.label}
+            </span>
+            <ol className={styles.steps}>
+              {process.steps.map((st) => (
+                <li key={st.n} data-b="block" className={styles.step}>
+                  <span className={styles.stepN}>{st.n}</span>
+                  <h3 className={styles.stepTitle}>{st.title}</h3>
+                  <p className={styles.stepText}>{st.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
         {grid.length > 0 && (
           <div className={styles.projects} {...blk}>
             <span data-b="type" className={styles.projectsLabel}>

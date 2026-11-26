@@ -72,8 +72,59 @@ export const services = [
     light: true,
     agents: [0, 1],
     title: 'Sistemas que trabalham do jeito que o seu negócio funciona.',
-    text: 'Sistemas web, apps e robôs feitos para o seu processo. A planilha que alguém atualiza à mão toda segunda vira uma tela que se atualiza sozinha.',
+    text: 'A gente olha como a sua empresa trabalha hoje e constrói o sistema, o robô ou a integração que tira o trabalho manual do caminho. A equipe para de copiar, conferir e lembrar, e passa a cuidar do que importa.',
     tags: ['web apps', 'automação', 'APIs'],
+    // Na home a secao foca no que fazemos pela operacao (sem a grade de projetos, que fica em /projetos).
+    homeProjects: false,
+    cardsLabel: 'O que fazemos',
+    operation: {
+      label: 'O que muda na sua operação',
+      before: 'Hoje',
+      after: 'Com o sistema',
+      items: [
+        {
+          before: 'Alguém atualiza a planilha à mão toda segunda.',
+          after: 'Um painel se atualiza sozinho, com os números do dia.',
+        },
+        {
+          before: 'Os mesmos dados são digitados em dois ou três sistemas.',
+          after: 'Os sistemas conversam entre si. A informação entra uma vez só.',
+        },
+        {
+          before: 'Prazos e tarefas dependem da memória de alguém.',
+          after: 'Um robô cria a tarefa com prazo e responsável e avisa no WhatsApp.',
+        },
+        {
+          before: 'A informação fica espalhada em e-mail, WhatsApp e planilhas.',
+          after: 'Tudo fica num lugar só, com histórico e acesso pelo celular.',
+        },
+      ],
+    },
+    process: {
+      label: 'Como trabalhamos',
+      steps: [
+        {
+          n: '01',
+          title: 'Diagnóstico',
+          text: 'Entendemos como a tarefa é feita hoje e onde o tempo da equipe se perde.',
+        },
+        {
+          n: '02',
+          title: 'Proposta',
+          text: 'Escopo, prazo e valor por escrito antes de começar.',
+        },
+        {
+          n: '03',
+          title: 'Entrega em etapas',
+          text: 'Você usa as primeiras telas cedo e ajusta no caminho.',
+        },
+        {
+          n: '04',
+          title: 'Acompanhamento',
+          text: 'Depois que entra no ar, a gente ajusta, melhora e dá suporte.',
+        },
+      ],
+    },
     cards: [
       {
         title: 'Sistemas web',
@@ -488,7 +539,11 @@ export const carouselViewer = {
 };
 
 // Telefone de contato (WhatsApp e ligacao).
-const PHONE = { label: '+55 88 9294-9148', tel: '+558892949148', whatsapp: 'https://wa.me/558892949148' };
+const PHONE = {
+  label: '+55 88 9294-9148',
+  tel: '+558892949148',
+  whatsapp: 'https://wa.me/558892949148',
+};
 
 export const contact = {
   title: ['Qual tarefa você quer', 'nunca mais fazer?'],
