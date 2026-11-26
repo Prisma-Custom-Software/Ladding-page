@@ -118,16 +118,6 @@ export default function MenuDrawer() {
             </NavLink>
           ))}
         </div>
-        <div className={styles.services}>
-          <span className={styles.small}>{menu.servicesLabel}</span>
-          <div className={styles.chips}>
-            {menu.services.map((sv) => (
-              <NavLink key={sv.href} href={sv.href} onClick={closeNav} className={styles.chip}>
-                {sv.label}
-              </NavLink>
-            ))}
-          </div>
-        </div>
         <div className={styles.foot}>
           <div className={styles.contact}>
             <span className={styles.small}>{menu.contactLabel}</span>

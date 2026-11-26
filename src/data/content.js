@@ -566,20 +566,8 @@ export const contact = {
 export const menu = {
   items: [
     { n: '01', href: '/', label: 'Início', desc: 'Quem somos e o que fazemos' },
-    {
-      n: '02',
-      href: '/servicos/software',
-      label: 'Serviços',
-      desc: 'Software, motion e landing pages',
-    },
-    { n: '03', href: '/projetos', label: 'Projetos', desc: 'Trabalhos e resultados entregues' },
-    { n: '04', href: '#contato', label: 'Contato', desc: 'Conte o que você precisa' },
-  ],
-  servicesLabel: 'Serviços',
-  services: [
-    { href: '/servicos/software', label: 'Software' },
-    { href: '/servicos/motion', label: 'Motion e vídeo' },
-    { href: '/servicos/landing', label: 'Landing pages' },
+    { n: '02', href: '/projetos', label: 'Projetos', desc: 'Trabalhos e resultados entregues' },
+    { n: '03', href: '#contato', label: 'Contato', desc: 'Conte o que você precisa' },
   ],
   contactLabel: 'Fale com a gente',
   email: 'contato@prisma.tech',

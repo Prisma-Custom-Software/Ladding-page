@@ -110,34 +110,11 @@
   font-size: 13px;
   color: rgba(244, 245, 248, 0.6);
 }
-.services {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 28px clamp(20px, 3vw, 36px);
-}
 .small {
   font-family: 'Roboto Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
   color: rgba(244, 245, 248, 0.6);
-}
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.drawer a.chip {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 12px;
-  color: #f4f5f8;
-  border: 1px solid rgba(244, 245, 248, 0.16);
-  padding: 10px 14px;
-  border-radius: 2px;
-}
-.drawer a.chip:hover {
-  border-color: #b8ff3a;
-  color: #b8ff3a;
 }
 .foot {
   margin-top: auto;
